@@ -9,12 +9,12 @@ body{
 
 .button-group > button {
     font-size: 1.5em;
-    padding: 10px;
-    margin: 10px;
+    padding: 10px 20px;
+    margin: 0 10px;
 }
 
 #counterText {
     text-align: center;
+    font: 4em consolas, Arial, Helvetica, sans-serif;
     color: white;
-    font-size: 4em;
 }
