@@ -12,3 +12,9 @@ body{
     padding: 10px;
     margin: 10px;
 }
+
+#counterText {
+    text-align: center;
+    color: white;
+    font-size: 4em;
+}
