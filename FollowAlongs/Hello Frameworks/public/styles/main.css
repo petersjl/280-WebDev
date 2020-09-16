@@ -10,3 +10,15 @@ body {
 .page-container {
     margin-top: 75px;
 }
+
+.no-gutters>.col,
+.no-gutters>[class*="col-"]{
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+#counterText {
+    font-size: 3em;
+    text-align: center;
+    margin-top: 50px;
+}
