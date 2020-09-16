@@ -22,6 +22,7 @@ rhit.functionName = function () {
 rhit.main = function () {
 	console.log("Ready");
 	const buttons = document.querySelectorAll("#counterButtons button");
+	const counterText = document.getElementById("counterText");
 	// for (let i = 0; i < buttons.length; i++){
 	// 	let button = buttons[i];
 	// 	button.onclick = (event) => {
@@ -31,7 +32,13 @@ rhit.main = function () {
 	
 	for (const button of buttons) {
 		button.onclick = (event) => {
-			console.log(`You pressed`, button)
+			if(button.dataset.isMultiplication){
+				rhit.counter *= parseInt(button.dataset.amount);
+			}
+			else{
+				rhit.counter += parseInt(button.dataset.amount);
+			}
+			counterText.textContent = "Count = " + rhit.counter;
 		}
 	}
 };
