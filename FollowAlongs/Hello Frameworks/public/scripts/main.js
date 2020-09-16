@@ -21,8 +21,8 @@ rhit.functionName = function () {
 /** function and class syntax examples */
 rhit.main = function () {
 	console.log("Ready");
-	const buttons = document.querySelectorAll("#counterButtons button");
-	const counterText = document.getElementById("counterText");
+	// const buttons = document.querySelectorAll("#counterButtons button");
+	// const counterText = document.getElementById("counterText");
 	// for (let i = 0; i < buttons.length; i++){
 	// 	let button = buttons[i];
 	// 	button.onclick = (event) => {
@@ -30,17 +30,27 @@ rhit.main = function () {
 	// 	}
 	// }
 	
-	for (const button of buttons) {
-		button.onclick = (event) => {
-			if(button.dataset.isMultiplication){
-				rhit.counter *= parseInt(button.dataset.amount);
-			}
-			else{
-				rhit.counter += parseInt(button.dataset.amount);
-			}
-			counterText.textContent = "Count = " + rhit.counter;
+	// for (const button of buttons) {
+	// 	button.onclick = (event) => {
+	// 		if(button.dataset.isMultiplication){
+	// 			rhit.counter *= parseInt(button.dataset.amount);
+	// 		}
+	// 		else{
+	// 			rhit.counter += parseInt(button.dataset.amount);
+	// 		}
+	// 		counterText.textContent = "Count = " + rhit.counter;
+	// 	}
+	// }
+
+	$("#counterButtons button").click((event) => {
+		const evt = $(event.target);
+		if(evt.data("isMultiplication")){
+			rhit.counter *= evt.data("amount")
+		} else {
+			rhit.counter += evt.data("amount")
 		}
-	}
+		$("#counterText").html("Count = " + rhit.counter)
+	});
 };
 
 rhit.main();
