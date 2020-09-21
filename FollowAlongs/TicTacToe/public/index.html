@@ -17,8 +17,31 @@
   <div id="mainPage" class="container page-container">
 
     <h1 id="gameStateText" class="text-center">X's turn</h1>
-    <div class="row justify-content-center">
 
+    
+
+      <div id="gameBoard" class="mx-auto">
+        <div class="my-row">
+          <div class="square b-bottom b-right">X</div>
+          <div class="square b-bottom b-left b-right">X</div>
+          <div class="square b-bottom b-left">X</div>
+        </div>
+        <div class="my-row">
+          <div class="square b-bottom b-top b-right">X</div>
+          <div class="square b-bottom b-top b-left b-right">X</div>
+          <div class="square b-bottom b-top b-left">X</div>
+        </div>
+        <div class="my-row">
+          <div class="square b-top b-right">X</div>
+          <div class="square b-top b-left b-right">X</div>
+          <div class="square b-top b-left">X</div>
+        </div>
+        <div type="button" class="btn" id="newGameButton">New Game</div>
+      </div>
+    
+
+    <!-- Bootstrap system -->
+    <!-- <div class="row justify-content-center">
       <div id="gameBoard" class="col-10 col-md-6">
         <div class="row">
           <div class="col square b-bottom b-right">X</div>
@@ -37,7 +60,9 @@
         </div>
         <div type="button" class="btn" id="newGameButton">New Game</div>
       </div>
-    </div>
+    </div> -->
+
+
   </div>
 
   <script src="scripts/jquery.min.js"></script>

@@ -14,6 +14,7 @@ body {
 .square {
     background-color: #80000080;
     color: white;
+    flex: 1 0 0;
     text-align: center;
     font-size: 60px;
     line-height: 100px;
@@ -41,4 +42,14 @@ body {
     margin-top: 15px;
     color: white;
     margin-left: auto;
+}
+
+.my-row {
+    display: flex;
+    direction: row;
+}
+
+#gameBoard {
+    height: 300px;
+    width: 300px;
 }
