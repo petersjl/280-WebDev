@@ -57,3 +57,35 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
 }
+
+@media (min-width: 576px) {
+    #gameBoard {
+        height: 450px;
+        width: 450px;
+    }
+
+    .square {
+        font-size: 90px;
+        line-height: 140px;
+    }
+
+    #newGameButton {
+        font-size: 1.25em;
+    }
+}
+
+@media (min-width: 768px) {
+    #gameBoard {
+        height: 600px;
+        width: 600px;
+    }
+
+    .square {
+        font-size: 120px;
+        line-height: 180px;
+    }
+
+    #newGameButton {
+        font-size: 1.5em;
+    }
+}
