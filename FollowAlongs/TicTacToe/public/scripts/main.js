@@ -40,11 +40,11 @@ rhit.Game = class {
 	}
 
 	getMarkAtIndex(buttonIndex) {
-		return "X";
+		return this.board[buttonIndex];
 	}
 
 	getState() {
-		return "X's Turn";
+		return this.state;
 	}
 };
 
