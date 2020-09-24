@@ -77,7 +77,28 @@ rhit.Game = class {
 	}
 
 	_checkForGameOver(){
-		
+		if (!this.board.includes(rhit.Game.Mark.NONE)){
+			this.state = rhit.Game.State.TIE;
+		}
+		const linesOf3 = [];
+		linesOf3.push(this.board[0] + this.board[1] + this.board[2]);
+		linesOf3.push(this.board[3] + this.board[4] + this.board[5]);
+		linesOf3.push(this.board[6] + this.board[7] + this.board[8]);
+
+		linesOf3.push(this.board[0] + this.board[3] + this.board[6]);
+		linesOf3.push(this.board[1] + this.board[4] + this.board[7]);
+		linesOf3.push(this.board[2] + this.board[5] + this.board[8]);
+
+		linesOf3.push(this.board[0] + this.board[4] + this.board[8]);
+		linesOf3.push(this.board[2] + this.board[4] + this.board[6]);
+
+		for (const lineOf3 of linesOf3){
+			if(lineOf3 == "XXX"){
+				this.state = rhit.Game.State.X_WIN;
+			} else if (lineOf3 == "OOO") {
+				this.state = rhit.Game.State.O_WIN;
+			}
+		}
 	}
 
 	getMarkAtIndex(buttonIndex) {
