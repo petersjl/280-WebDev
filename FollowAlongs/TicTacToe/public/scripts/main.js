@@ -9,12 +9,26 @@ rhit.PageController = class {
 			square.onclick = (event) => {
 				const buttonIndex = parseInt(square.dataset.buttonIndex);
 				this.game.presssedButtonAtIndex(buttonIndex);
+				this.updateView();
 			}
 		}
+
+		document.querySelector("#newGameButton").onclick = (event) => {
+			this.game = new rhit.Game();
+			this.updateView();
+		}
+
+		this.updateView();
 	}
 
-	updateView() {
 
+
+	updateView() {
+		const squares = document.querySelectorAll(".square");
+		squares.forEach((square, index) => {
+			square.innerHTML = this.game.getMarkAtIndex(index);
+		});
+		document.querySelector("#gameStateText").innerHTML = this.game.getState();
 	}
 };
 
@@ -45,6 +59,7 @@ rhit.Game = class {
 
 	presssedButtonAtIndex(buttonIndex) {
 		console.log(buttonIndex);
+		this.board[buttonIndex] = rhit.Game.Mark.X;
 	}
 
 	getMarkAtIndex(buttonIndex) {
