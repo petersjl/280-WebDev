@@ -1,0 +1,69 @@
+body {
+    background: #CCCCCC;
+    padding: 10px;
+    font-weight: bold;
+}
+
+h1 {
+    font-weight: bolder;
+}
+
+.navbar {
+    background-color: #800000;
+    color: white;
+}
+
+.page-container {
+    margin-top: 75px;
+}
+
+#numberCounter {
+    text-align: center;
+}
+
+#favoriteColorContainer {
+    width: 200px;
+    margin: 20px;
+ }
+  
+ #favoriteColorBox {
+    background-color: #800000;
+    line-height: 100px;
+    text-align: center;
+    color: white;
+ }
+
+ .color-box{
+     justify-content: center;
+ }
+
+ .btn {
+     border-radius: 5px;
+ }
+ 
+ .btn.btn-primary {
+     color: white;
+     background-color: #800000;
+     padding: .4675rem 0px;
+ }
+
+ .color-button {
+    margin-left: 2px;
+    margin-right: 2px;
+ }
+
+ #buttonBlue {
+     background-color: blue;
+ }
+
+ #buttonGreen {
+     background-color: green;
+ }
+
+ #buttonRed {
+     background-color: red;
+ }
+
+ #buttonPurple {
+     background-color: purple;
+ }

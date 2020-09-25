@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+  <link rel="stylesheet" href="styles/bootstrap-material-design.min.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <title>Favorite Things</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark fixed-top">
+    <a class="navbar-brand" href="#">Favorite Things</a>
+  </nav>
+  <div id="mainPage" class="container page-container">
+
+
+  </div>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/popper.js"></script>
+  <script src="scripts/bootstrap-material-design.js"></script>
+  <script>$("body").bootstrapMaterialDesign();</script>
+  <script src="scripts/main.js"></script>
+
+  <hr>
+
+  <div class="row">
+    <div class="col">
+      <h1>Favorite Number:</h1>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col">
+      <h1 id="numberCounter">0</h1>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col col-md-2">
+      <button type="button" id="buttonAdd" class="btn btn-block btn-primary">-1</button>
+    </div>
+    <div class="col col-md-2">
+      <button type="button" id="buttonReset" class="btn btn-block btn-primary">Reset</button>
+    </div>
+    <div class="col col-md-2">
+      <button type="button" id="buttonSub" class="btn btn-block btn-primary">+1</button>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col">
+      <h1>Favorite Color:</h1>
+    </div>
+  </div>
+  <div id="favoriteColorContainer" class="mx-auto">
+    <div id="favoriteColorBox">
+      #800000
+    </div>
+  </div>
+  <div class="color-box">
+    <div class="row no-gutters color-box">
+      <div class="col col-md-2 color-button">
+        <button type="button" id="buttonBlue" class="btn btn-block btn-primary color-button">Blue</button>
+      </div>
+      <div class="col col-md-2 color-button">
+        <button type="button" id="buttonGreen" class="btn btn-block btn-primary color-button">Green</button>
+      </div>
+      <div class="col col-md-2 color-button">
+        <button type="button" id="buttonRed" class="btn btn-block btn-primary color-button">Red</button>
+      </div>
+      <div class="col col-md-2 color-button">
+        <button type="button" id="buttonPurple" class="btn btn-block btn-primary color-button">Purple</button>
+      </div>
+    </div>
+  </div>
+  <hr>
+</body>
+
+</html>
