@@ -1,0 +1,43 @@
+body {
+    background: #DDDDDD;
+}
+
+.navbar {
+    background-color: #800000;
+    color: white;
+}
+
+.page-container {
+    margin-top: 75px;
+}
+
+.two-group {
+    text-align: center;
+}
+
+.two-group > .btn.btn-primary {
+    color: #ffffff;
+    background-color: #007BFF;
+}
+
+#buttonReturn {
+    color: #ffffff;
+    background-color: #800000;
+}
+
+#timeContainer {
+    border: 1px solid black;
+    color: #800000;
+    background-color: #ffffff;
+    font-weight: bold;
+    font-size: 1.4rem;
+    padding: 1rem 0rem;
+    text-align: center;
+}
+
+#mainContainer {
+    border: 1px solid black;
+    background-color: #999999;
+    justify-content: center;
+    text-align: center;
+}

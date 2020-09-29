@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+  <link rel="stylesheet" href="styles/bootstrap-material-design.min.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <title>App Name</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark fixed-top">
+    <a class="navbar-brand" href="#">Time Travel Planner
+    </a>
+  </nav>
+  <div id="mainPage" class="container page-container">
+
+    <div id="mainContainer" class="row">
+      <div class="col-12 col-sm-11 col-md-10">
+        <div class="row justify-content-center my-4">
+          <div class="col-12 px-4">
+            <div id="timeContainer"> Placeholder Text </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-12 mb-4 col-sm-4 col-lg-2">
+            <div class="two-group">
+              <button data-type="century" data-val="-1" class="btn btn-primary btn-block">-1 century</button>
+              <button data-type="century" data-val="1" class="btn btn-primary btn-block">+1 century</button>
+          </div>
+          </div>
+          <div class="col-12 mb-4 col-sm-4 col-lg-2">
+            <div class="two-group">
+              <button data-type="decade" data-val="-1" class="btn btn-primary btn-block">-1 decade</button>
+              <button data-type="decade" data-val="1" class="btn btn-primary btn-block">+1 decade</button>
+          </div>
+          </div>
+          <div class="col-12 mb-4 col-sm-4 col-lg-2">
+            <div class="two-group">
+              <button  data-type="year" data-val="-1" class="btn btn-primary btn-block">-1 year</button>
+              <button  data-type="year" data-val="1" class="btn btn-primary btn-block">+1 year</button>
+          </div>
+          </div>
+          <div class="col-12 mb-4 col-sm-4 col-lg-2">
+            <div class="two-group">
+              <button data-type="month" data-val="-1" class="btn btn-primary btn-block">-1 month</button>
+              <button data-type="month" data-val="1" class="btn btn-primary btn-block">+1 month</button>
+          </div>
+          </div>
+          <div class="col-12 mb-4 col-sm-4 col-lg-2">
+            <div class="two-group">
+              <button data-type="day" data-val="-1" class="btn btn-primary btn-block">-1 day</button>
+              <button data-type="day" data-val="1" class="btn btn-primary btn-block">+1 day</button>
+          </div>
+          </div>
+          <div class="col-12 mb-4 col-sm-4 col-lg-2">
+            <div class="two-group">
+              <button data-type="hour" data-val="-1" class="btn btn-primary btn-block">-1 hour</button>
+              <button data-type="hour" data-val="1" class="btn btn-primary btn-block">+1 hour</button>
+          </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mb-4 justify-content-center">
+        <div class="col-12 px-4">
+          <button id="buttonReturn" class="btn btn-primary btn-block">
+            Return from time traveling
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/popper.js"></script>
+  <script src="scripts/bootstrap-material-design.js"></script>
+  <script>$("body").bootstrapMaterialDesign();</script>
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>
