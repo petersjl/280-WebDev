@@ -13,13 +13,28 @@ rhit.LinearLightsOutGame = class {
 		this.lights = [];
 		this.numPresses = 0;
 		this.gameLabel = document.getElementById("gameStateTag");
+		this.lightsIndicator = document.getElementById("howMany")
 
 		this.lightOn = "#F8C02E";
 		this.lightOff = "#343A40";
 
-
+		this.lightsIndicator.innerHTML = `Number of buttons: ${this.numLights}`
 		this.generateButtons();
 		document.getElementById("buttonNewGame").onclick = () => this.startNewGame();
+		document.getElementById("buttonSub").onclick = () => {
+			if(this.numLights > 3){
+				this.numLights--;
+				this.lightsIndicator.innerHTML = `Number of buttons: ${this.numLights}`
+				this.startNewGame()
+			}
+		}
+		document.getElementById("buttonAdd").onclick = () => {
+			if(this.numLights < 12){
+				this.numLights++;
+				this.lightsIndicator.innerHTML = `Number of buttons: ${this.numLights}`
+				this.startNewGame()
+			}
+		}
 		this.startNewGame();
 	}
 
@@ -86,7 +101,7 @@ rhit.LinearLightsOutGame = class {
 		for (let i = 0; i < numTurns; i++) {
 			this.pushButtonAtIndex(Math.floor(Math.random() * this.numLights));
 		}
-		if (this.checkWin) this.randomize();
+		if (this.checkWin()) this.randomize();
 	}
 
 	startNewGame(){

@@ -43,13 +43,29 @@ body {
     flex-shrink: 1;
 }
 
+.buttonsBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#howMany {
+    text-align: end;
+    margin-right: 20px;
+}
+
+.container > .buttonsBar > .btn {
+    background-color: #800000;
+    color: #ffffff;
+    margin: 2px;
+    font-size: .5rem;
+}
+
 #buttonNewGame {
     background-color: #800000;
     color: #ffffff;
-    margin-left: 60%;
-    margin-right: 20%;
     font-size: .5rem;
-    flex-grow: 1;
     flex-shrink: 1;
 }
 
@@ -61,6 +77,10 @@ body {
     
     #gameStateTag {
         font-size: 1.5rem;
+    }
+
+    .container > .buttonsBar > .btn {
+        font-size: .75rem;
     }
     
     #buttonNewGame {
@@ -76,6 +96,10 @@ body {
     
     #gameStateTag {
         font-size: 2rem;
+    }
+
+    .container > .buttonsBar > .btn {
+        font-size: 1rem;
     }
     
     #buttonNewGame {
