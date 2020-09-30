@@ -34,6 +34,8 @@ rhit.LinearLightsOutGame = class {
 			let btn = document.createElement("BUTTON");
 			btn.innerHTML = '0';
 			btn.classList.add("light");
+			btn.classList.add("btn");
+			btn.classList.add("btn-primary");
 			btn.onclick = () => this.pushButtonAtIndex(i);
 			this.lights.push(btn);
 			buttonHolder.appendChild(btn);
@@ -84,6 +86,7 @@ rhit.LinearLightsOutGame = class {
 		for (let i = 0; i < numTurns; i++) {
 			this.pushButtonAtIndex(Math.floor(Math.random() * this.numLights));
 		}
+		if (this.checkWin) this.randomize();
 	}
 
 	startNewGame(){
