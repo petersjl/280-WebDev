@@ -10,3 +10,16 @@ body {
 .page-container {
     margin-top: 75px;
 }
+
+body > #fab {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    background: #800000;
+    color: #ffffff;
+}
+
+body > #fab:active {
+    transform: translateY(2px);
+    opacity: .8;
+}
