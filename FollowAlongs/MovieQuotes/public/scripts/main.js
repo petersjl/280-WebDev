@@ -26,9 +26,11 @@ rhit.ListPageController = class {
 		$("#addQuoteDialog").on("shown.bs.modal", (event) => {
 			document.getElementById("inputQuote").focus();
 		})
+
+		rhit.fbMovieQuotesManager.beginListening(this.updateList.bind(this));
 	}
 
-	methodName() {
+	updateList() {
 
 	}
 }
@@ -45,6 +47,7 @@ rhit.FbMovieQuotesManager = class {
 	constructor() {
 		this._documentSnapshots = [];
 		this._ref = firebase.firestore().collection(rhit.FB_COLLECTION_MOVIEQUOTE);
+		this._unsubscribe = null;
 	}
 	add(quote, movie) {
 		this._ref.add({
@@ -53,12 +56,27 @@ rhit.FbMovieQuotesManager = class {
 			[rhit.FB_KEY_LAST_TOUCHED]: firebase.firestore.Timestamp.now()
 		})
 	}
-	beginListening(changeListener) {}
-	stopListening() {}
+	beginListening(changeListener) {
+		this._unsubscribe = this._ref.onSnapshot((querySnapshot) => {
+			this._documentSnapshots = querySnapshot.docs;
+			changeListener();
+		})
+	}
+	stopListening() { this._unsubscribe() }
 	update(id, quote, movie) {}
 	delete(id) {}
-	get length() {}
-	getMovieQuoteAtIndex(index) {}
+	get length() {
+		return this._documentSnapshots.length;
+	}
+	getMovieQuoteAtIndex(index) {
+		const docSnapshot = this._documentSnapshots[index];
+		const mq = new rhit.MoviewQuote(
+			docSnapshot.id,
+			docSnapshot.get(rhit.FB_KEY_QUOTE),
+			docSnapshot.get(FB_KEY_MOVIE)
+		);
+		return mq;
+	}
 }
 
 /* Main */
