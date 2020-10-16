@@ -54,6 +54,9 @@ rhit.ListPageController = class {
 		for (let i = 0; i < rhit.fbMovieQuotesManager.length; i++){
 			const mq = rhit.fbMovieQuotesManager.getMovieQuoteAtIndex(i);
 			const newCard = this._createCard(mq);
+			newCard.onclick = (event) => {
+				rhit.storage.setMovieQuoteId(mq.id);
+			}
 			newList.appendChild(newCard);
 		}
 
@@ -110,6 +113,19 @@ rhit.FbMovieQuotesManager = class {
 		);
 		return mq;
 	}
+}
+
+rhit.storage = rhit.storage || {};
+rhit.storage.MOVIEQUOTE_ID_KEY = "movieQuoteId"
+rhit.storage.getMovieQuoteId = () => {
+	const mqid = sessionStorage.getItem(rhit.storage.MOVIEQUOTE_ID_KEY);
+	if (!mqId) {
+		console.log("No movie quote id in sessionStorage!")
+	}
+	return mqid;
+}
+rhit.storage.setMovieQuoteId = (movieQuoteId) => {
+	sessionStorage.getItem(rhit.storage.MOVIEQUOTE_ID_KEY, movieQuoteId);
 }
 
 /* Main */
