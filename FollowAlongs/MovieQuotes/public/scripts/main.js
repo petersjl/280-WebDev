@@ -55,8 +55,8 @@ rhit.ListPageController = class {
 			const mq = rhit.fbMovieQuotesManager.getMovieQuoteAtIndex(i);
 			const newCard = this._createCard(mq);
 			newCard.onclick = (event) => {
-				rhit.storage.setMovieQuoteId(mq.id);
-				window.location.href = "/moviequote.html"
+				//rhit.storage.setMovieQuoteId(mq.id);
+				window.location.href = `/moviequote.html?mq=${mq.id}`;
 			}
 			newList.appendChild(newCard);
 		}
@@ -158,18 +158,18 @@ rhit.FbSingleQuoteManager = class {
 	}
 }
 
-rhit.storage = rhit.storage || {};
-rhit.storage.MOVIEQUOTE_ID_KEY = "movieQuoteId"
-rhit.storage.getMovieQuoteId = () => {
-	const mqId = sessionStorage.getItem(rhit.storage.MOVIEQUOTE_ID_KEY);
-	if (!mqId) {
-		console.log("No movie quote id in sessionStorage!")
-	}
-	return mqId;
-}
-rhit.storage.setMovieQuoteId = (movieQuoteId) => {
-	sessionStorage.setItem(rhit.storage.MOVIEQUOTE_ID_KEY, movieQuoteId);
-}
+// rhit.storage = rhit.storage || {};
+// rhit.storage.MOVIEQUOTE_ID_KEY = "movieQuoteId"
+// rhit.storage.getMovieQuoteId = () => {
+// 	const mqId = sessionStorage.getItem(rhit.storage.MOVIEQUOTE_ID_KEY);
+// 	if (!mqId) {
+// 		console.log("No movie quote id in sessionStorage!")
+// 	}
+// 	return mqId;
+// }
+// rhit.storage.setMovieQuoteId = (movieQuoteId) => {
+// 	sessionStorage.setItem(rhit.storage.MOVIEQUOTE_ID_KEY, movieQuoteId);
+// }
 
 /* Main */
 /** function and class syntax examples */
@@ -185,7 +185,9 @@ rhit.main = function () {
 
 	if(document.querySelector("#detailPage")) {
 		console.log("You are on the detail page")
-		rhit.fbSingleQuoteManager = new rhit.FbSingleQuoteManager(rhit.storage.getMovieQuoteId());
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		rhit.fbSingleQuoteManager = new rhit.FbSingleQuoteManager(urlParams.get("mq"));
 		rhit.controller = new rhit.DetailPageController();
 	}
 
