@@ -1,6 +1,6 @@
 var rhit = rhit || {};
 
-rhit.FB_COLLECTION_MOVIEQUOTE = "MovieQuotes";
+rhit.FB_COLLECTION_MOVIEQUOTES = "MovieQuotes";
 rhit.FB_KEY_QUOTE = "quote";
 rhit.FB_KEY_MOVIE = "movie";
 rhit.FB_KEY_LAST_TOUCHED = "lastTouched";
@@ -80,7 +80,7 @@ rhit.MoviewQuote = class {
 rhit.FbMovieQuotesManager = class {
 	constructor() {
 		this._documentSnapshots = [];
-		this._ref = firebase.firestore().collection(rhit.FB_COLLECTION_MOVIEQUOTE);
+		this._ref = firebase.firestore().collection(rhit.FB_COLLECTION_MOVIEQUOTES);
 		this._unsubscribe = null;
 	}
 	add(quote, movie) {
@@ -116,6 +116,32 @@ rhit.FbMovieQuotesManager = class {
 	}
 }
 
+rhit.DetailPageController = class {
+	constructor() {
+
+	}
+	updateView() {
+
+	}
+}
+
+rhit.FbSingleQuoteManager = class {
+	constructor(movieQuoteId) {
+		if (movieQuoteId == null) window.location.href = "/";
+		this._documentSnapshot = {};
+		this._unsubscribe = null;
+		this._ref = firebase.firestore().collection(rhit.FB_COLLECTION_MOVIEQUOTES).doc(movieQuoteId);
+	}
+	beginListening(changeListener) {
+
+	};
+	stipListening() {
+		this._unsubscribe();
+	};
+	update(quote, movie) {};
+	delete() {};
+}
+
 rhit.storage = rhit.storage || {};
 rhit.storage.MOVIEQUOTE_ID_KEY = "movieQuoteId"
 rhit.storage.getMovieQuoteId = () => {
@@ -143,7 +169,7 @@ rhit.main = function () {
 
 	if(document.querySelector("#detailPage")) {
 		console.log("You are on the detail page")
-
+		rhit.fbSingleQuoteManager = new rhit.FbSingleQuoteManager(rhit.storage.getMovieQuoteId());
 	}
 
 	// const ref = firebase.firestore().collection("MovieQuotes");
