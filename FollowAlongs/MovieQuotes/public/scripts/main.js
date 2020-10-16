@@ -118,41 +118,57 @@ rhit.FbMovieQuotesManager = class {
 
 rhit.DetailPageController = class {
 	constructor() {
-
+		rhit.fbSingleQuoteManager.beginListening(this.updateView.bind(this));
 	}
 	updateView() {
-
+		document.getElementById("cardQuote").innerHTML = rhit.fbSingleQuoteManager.quote;
+		document.getElementById("cardMovie").innerHTML = rhit.fbSingleQuoteManager.movie;
 	}
 }
 
 rhit.FbSingleQuoteManager = class {
 	constructor(movieQuoteId) {
-		if (movieQuoteId == null) window.location.href = "/";
+		//if (movieQuoteId == null) window.location.href = "/";
 		this._documentSnapshot = {};
 		this._unsubscribe = null;
 		this._ref = firebase.firestore().collection(rhit.FB_COLLECTION_MOVIEQUOTES).doc(movieQuoteId);
 	}
 	beginListening(changeListener) {
-
+		this._unsubscribe = this._ref.onSnapshot((doc) => {
+			if (doc.exists) {
+				this._documentSnapshot = doc;
+				changeListener();
+			} else {
+				console.log("No such document!");
+			}
+		})
 	};
 	stipListening() {
 		this._unsubscribe();
 	};
 	update(quote, movie) {};
 	delete() {};
+
+	get quote() {
+		return this._documentSnapshot.get(rhit.FB_KEY_QUOTE);
+	}
+
+	get movie() {
+		return this._documentSnapshot.get(rhit.FB_KEY_MOVIE);
+	}
 }
 
 rhit.storage = rhit.storage || {};
 rhit.storage.MOVIEQUOTE_ID_KEY = "movieQuoteId"
 rhit.storage.getMovieQuoteId = () => {
-	const mqid = sessionStorage.getItem(rhit.storage.MOVIEQUOTE_ID_KEY);
+	const mqId = sessionStorage.getItem(rhit.storage.MOVIEQUOTE_ID_KEY);
 	if (!mqId) {
 		console.log("No movie quote id in sessionStorage!")
 	}
-	return mqid;
+	return mqId;
 }
 rhit.storage.setMovieQuoteId = (movieQuoteId) => {
-	sessionStorage.getItem(rhit.storage.MOVIEQUOTE_ID_KEY, movieQuoteId);
+	sessionStorage.setItem(rhit.storage.MOVIEQUOTE_ID_KEY, movieQuoteId);
 }
 
 /* Main */
@@ -170,6 +186,7 @@ rhit.main = function () {
 	if(document.querySelector("#detailPage")) {
 		console.log("You are on the detail page")
 		rhit.fbSingleQuoteManager = new rhit.FbSingleQuoteManager(rhit.storage.getMovieQuoteId());
+		rhit.controller = new rhit.DetailPageController();
 	}
 
 	// const ref = firebase.firestore().collection("MovieQuotes");
