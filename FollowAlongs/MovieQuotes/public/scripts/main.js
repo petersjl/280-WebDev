@@ -118,6 +118,10 @@ rhit.FbMovieQuotesManager = class {
 
 rhit.DetailPageController = class {
 	constructor() {
+		document.getElementById("submitDeleteQuote").onclick = () => {
+			rhit.fbSingleQuoteManager.delete().then(() => window.location.href = "/");
+		}
+
 		document.getElementById("submitEditQuote").onclick = (event) => {
 			const quote = document.getElementById("inputQuote").value;
 			const movie = document.getElementById("inputMovie").value;
@@ -142,7 +146,7 @@ rhit.DetailPageController = class {
 
 rhit.FbSingleQuoteManager = class {
 	constructor(movieQuoteId) {
-		//if (movieQuoteId == null) window.location.href = "/";
+		if (movieQuoteId == null) window.location.href = "/";
 		this._documentSnapshot = {};
 		this._unsubscribe = null;
 		this._ref = firebase.firestore().collection(rhit.FB_COLLECTION_MOVIEQUOTES).doc(movieQuoteId);
@@ -167,7 +171,9 @@ rhit.FbSingleQuoteManager = class {
 			[rhit.FB_KEY_LAST_TOUCHED]: firebase.firestore.Timestamp.now()
 		})
 	};
-	delete() {};
+	delete() {
+		return this._ref.delete();
+	};
 
 	get quote() {
 		return this._documentSnapshot.get(rhit.FB_KEY_QUOTE);
