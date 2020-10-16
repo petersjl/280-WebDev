@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "petersjl-firebaseauth",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
