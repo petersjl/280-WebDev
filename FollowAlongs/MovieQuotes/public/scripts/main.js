@@ -92,7 +92,7 @@ rhit.FbMovieQuotesManager = class {
 	}
 	beginListening(changeListener) {
 		this._unsubscribe = this._ref
-		.orderBy(rhit.FB_KEY_LAST_TOUCHED)
+		.orderBy(rhit.FB_KEY_LAST_TOUCHED, "desc")
 		.limit(50)
 		.onSnapshot((querySnapshot) => {
 			this._documentSnapshots = querySnapshot.docs;
@@ -118,6 +118,20 @@ rhit.FbMovieQuotesManager = class {
 
 rhit.DetailPageController = class {
 	constructor() {
+		document.getElementById("submitEditQuote").onclick = (event) => {
+			const quote = document.getElementById("inputQuote").value;
+			const movie = document.getElementById("inputMovie").value;
+			rhit.fbSingleQuoteManager.update(quote,movie);
+		}
+
+		$("#editQuoteDialog").on("show.bs.modal", (event) => {
+			document.getElementById("inputQuote").value = rhit.fbSingleQuoteManager.quote;
+			document.getElementById("inputMovie").value = rhit.fbSingleQuoteManager.movie;
+		})
+		$("#editQuoteDialog").on("shown.bs.modal", (event) => {
+			document.getElementById("inputQuote").focus();
+		})
+
 		rhit.fbSingleQuoteManager.beginListening(this.updateView.bind(this));
 	}
 	updateView() {
@@ -146,7 +160,13 @@ rhit.FbSingleQuoteManager = class {
 	stipListening() {
 		this._unsubscribe();
 	};
-	update(quote, movie) {};
+	update(quote, movie) {
+		this._ref.update({
+			[rhit.FB_KEY_QUOTE]: quote,
+			[rhit.FB_KEY_MOVIE]: movie,
+			[rhit.FB_KEY_LAST_TOUCHED]: firebase.firestore.Timestamp.now()
+		})
+	};
 	delete() {};
 
 	get quote() {
