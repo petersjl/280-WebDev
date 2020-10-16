@@ -56,6 +56,7 @@ rhit.ListPageController = class {
 			const newCard = this._createCard(mq);
 			newCard.onclick = (event) => {
 				rhit.storage.setMovieQuoteId(mq.id);
+				window.location.href = "/moviequote.html"
 			}
 			newList.appendChild(newCard);
 		}
