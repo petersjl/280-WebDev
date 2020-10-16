@@ -1,36 +1,22 @@
-/**
- * @fileoverview
- * Provides the JavaScript interactions for all pages.
- *
- * @author 
- * PUT_YOUR_NAME_HERE
- */
-
-/** namespace. */
 var rhit = rhit || {};
-
-/** globals */
-rhit.variableName = "";
-
-/** function and class syntax examples */
-rhit.functionName = function () {
-	/** function body */
-};
-
-rhit.ClassName = class {
-	constructor() {
-
-	}
-
-	methodName() {
-
-	}
-}
 
 /* Main */
 /** function and class syntax examples */
 rhit.main = function () {
 	console.log("Ready");
+
+	const inputEmailEl = document.getElementById("inputEmail");
+	const inputPasswordEl = document.getElementById("inputPassword");
+
+	document.getElementById("signOutButton").onclick = (event) => {
+		console.log("Sign out")
+	}
+	document.getElementById("createAccountButton").onclick = (event) => {
+		console.log(`Create account for email: ${inputEmailEl.value} password: ${inputPasswordEl.value}`)
+	}
+	document.getElementById("logInButton").onclick = (event) => {
+		console.log(`Log in for email: ${inputEmailEl.value} password: ${inputPasswordEl.value}`)
+	}
 };
 
 rhit.main();
