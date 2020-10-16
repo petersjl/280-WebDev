@@ -34,3 +34,7 @@ body > #fab:active {
     overflow: hidden;
     text-overflow: elipsis;
 }
+
+.dropdown-menu-right {
+    left: -128px;
+}
