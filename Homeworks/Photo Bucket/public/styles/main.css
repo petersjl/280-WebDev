@@ -30,13 +30,13 @@ body > #fab:active {
 
 /* Taken from https://gist.github.com/fisherds/7110e67bcda071aa8a00293e2c05f372 */
 
-#columns {
+#photoListContainer {
     column-count: 3;
     column-gap: 5px;
 }
 
 @media (min-width: 992px) {
-    #columns {
+    #photoListContainer {
         column-count: 4;
         column-gap: 10px;
     }
