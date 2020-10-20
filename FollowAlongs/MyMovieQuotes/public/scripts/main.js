@@ -5,6 +5,8 @@ rhit.FB_KEY_QUOTE = "quote";
 rhit.FB_KEY_MOVIE = "movie";
 rhit.FB_KEY_LAST_TOUCHED = "lastTouched";
 rhit.fbMovieQuotesManager = null;
+rhit.fbSingleQuoteManager = null;
+rhit.fbAuthManager = null;
 
 function htmlToElement(html) {
 	var template = document.createElement("template");
@@ -197,15 +199,33 @@ rhit.FbSingleQuoteManager = class {
 // 	sessionStorage.setItem(rhit.storage.MOVIEQUOTE_ID_KEY, movieQuoteId);
 // }
 
+rhit.LoginPageController = class {
+	constructor() {
+
+	}
+}
+
+rhit.FbAuthManager = class {
+	constructor() {
+		this._user = null;
+	}
+	beginListening(changeListener){}
+	signIn() {}
+	signOut() {}
+	get isSignedIn() {}
+	get uid() {}
+}
+
 /* Main */
-/** function and class syntax examples */
 rhit.main = function () {
 	console.log("Ready");
+
+	rhit.fbAuthManager = new rhit.FbAuthManager();
 
 	if(document.querySelector("#listPage")) {
 		console.log("You are on the list page");
 		rhit.fbMovieQuotesManager = new rhit.FbMovieQuotesManager();
-		rhit.controller = new rhit.ListPageController();
+		new rhit.ListPageController();
 
 	}
 
@@ -214,7 +234,12 @@ rhit.main = function () {
 		const queryString = window.location.search;
 		const urlParams = new URLSearchParams(queryString);
 		rhit.fbSingleQuoteManager = new rhit.FbSingleQuoteManager(urlParams.get("mq"));
-		rhit.controller = new rhit.DetailPageController();
+		new rhit.DetailPageController();
+	}
+
+	if(document.querySelector("#loginPage")) {
+		console.log("You are on the login page");
+		new rhit.LoginPageController();
 	}
 
 	// const ref = firebase.firestore().collection("MovieQuotes");
