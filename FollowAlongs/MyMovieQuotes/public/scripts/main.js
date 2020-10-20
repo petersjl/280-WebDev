@@ -201,7 +201,9 @@ rhit.FbSingleQuoteManager = class {
 
 rhit.LoginPageController = class {
 	constructor() {
-
+		document.getElementById("roseFireButton").onclick = (event) => {
+			rhit.fbAuthManager.signIn();
+		}
 	}
 }
 
@@ -209,11 +211,33 @@ rhit.FbAuthManager = class {
 	constructor() {
 		this._user = null;
 	}
-	beginListening(changeListener){}
-	signIn() {}
-	signOut() {}
-	get isSignedIn() {}
-	get uid() {}
+	beginListening(changeListener){
+		firebase.auth().onAuthStateChanged((user) =>{
+			this._user = user;
+			changeListener();
+		})
+	}
+	signIn() {
+		Rosefire.signIn("7c2909f3-080a-47a3-a2df-2214d601836c", (err, rfUser) => {
+			if (err) {
+			  console.log("Rosefire error!", err);
+			  return;
+			}
+			console.log("Rosefire success!", rfUser);
+			
+			firebase.auth().signInWithCustomToken(rfUser.token).catch((error) => {
+				if (error.code === 'auth/invalid-custom-token') {
+					console.log("The token you provided is not valid.");
+				} else {
+					console.log("Custom auth error", error.message);
+				}
+			});
+		  });
+		  
+	}
+	signOut() { firebase.auth().signOut().catch((error) => console.log("Sign out error"))}
+	get isSignedIn() {return !!this._user}
+	get uid() {return this._user.uid}
 }
 
 /* Main */
@@ -221,6 +245,9 @@ rhit.main = function () {
 	console.log("Ready");
 
 	rhit.fbAuthManager = new rhit.FbAuthManager();
+	rhit.fbAuthManager.beginListening(() => {
+		console.log("Is signed in: " + rhit.fbAuthManager.isSignedIn);
+	})
 
 	if(document.querySelector("#listPage")) {
 		console.log("You are on the list page");
