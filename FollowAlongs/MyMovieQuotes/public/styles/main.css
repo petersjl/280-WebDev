@@ -38,3 +38,9 @@ body > #fab:active {
 .dropdown-menu-right {
     left: -128px;
 }
+
+#roseLogo {
+    max-width: 350px;
+    display: block;
+    margin: auto;
+}
