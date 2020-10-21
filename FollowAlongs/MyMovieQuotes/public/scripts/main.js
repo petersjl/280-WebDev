@@ -135,8 +135,12 @@ rhit.FbMovieQuotesManager = class {
 
 rhit.DetailPageController = class {
 	constructor() {
+		document.getElementById("menuSignOut").onclick = (event) => {
+			rhit.fbAuthManager.signOut();
+		}
+
 		document.getElementById("submitDeleteQuote").onclick = () => {
-			rhit.fbSingleQuoteManager.delete().then(() => window.location.href = "/");
+			rhit.fbSingleQuoteManager.delete().then(() => window.location.href = "/list.html");
 		}
 
 		document.getElementById("submitEditQuote").onclick = (event) => {
@@ -158,6 +162,11 @@ rhit.DetailPageController = class {
 	updateView() {
 		document.getElementById("cardQuote").innerHTML = rhit.fbSingleQuoteManager.quote;
 		document.getElementById("cardMovie").innerHTML = rhit.fbSingleQuoteManager.movie;
+
+		if (rhit.fbSingleQuoteManager.author == rhit.fbAuthManager.uid) {
+			document.getElementById("menuEdit").style.display = "flex";
+			document.getElementById("menuDelete").style.display = "flex";
+		}
 	}
 }
 
@@ -198,6 +207,10 @@ rhit.FbSingleQuoteManager = class {
 
 	get movie() {
 		return this._documentSnapshot.get(rhit.FB_KEY_MOVIE);
+	}
+
+	get author() {
+		return this._documentSnapshot.get(rhit.FB_KEY_AUTHOR);
 	}
 }
 

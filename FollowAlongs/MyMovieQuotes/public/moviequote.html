@@ -12,14 +12,15 @@
 
 <body>
   <nav class="navbar navbar-dark fixed-top">
-    <a class="navbar-brand" href="/">Movie Quotes</a>
+    <a class="navbar-brand" href="/list.html">Movie Quotes</a>
     <div class="dropdown pull-xs-right">
       <button class="btn bmd-btn-icon dropdown-toggle" type="button" id="lr1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="material-icons">more_vert</i>
       </button>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lr1">
-        <button class="dropdown-item" type="button" data-toggle="modal" data-target="#editQuoteDialog"><i class="material-icons">edit</i></icon>&nbsp;&nbsp;&nbsp;Edit</button>
-        <button class="dropdown-item" type="button" data-toggle="modal" data-target="#deleteQuoteDialog"><i class="material-icons">delete</i>&nbsp;&nbsp;&nbsp;Delete</button>
+        <button id="menuEdit" class="dropdown-item" type="button" data-toggle="modal" data-target="#editQuoteDialog"><i class="material-icons">edit</i></icon>&nbsp;&nbsp;&nbsp;Edit</button>
+        <button id="menuDelete" class="dropdown-item" type="button" data-toggle="modal" data-target="#deleteQuoteDialog"><i class="material-icons">delete</i>&nbsp;&nbsp;&nbsp;Delete</button>
+        <button id="menuSignOut" class="dropdown-item" type="button"><i class="material-icons">login</i>&nbsp;&nbsp;&nbsp;Sign Out</button>
       </div>
     </div>
   </nav>

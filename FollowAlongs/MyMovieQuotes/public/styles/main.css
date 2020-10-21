@@ -72,3 +72,7 @@ body > #fab:active {
 .list-group-item :first-child {
     margin-right: .75rem;
 }
+
+#menuEdit, #menuDelete {
+    display: none;
+}
