@@ -240,15 +240,16 @@ rhit.FbAuthManager = class {
 	get uid() {return this._user.uid}
 }
 
-/* Main */
-rhit.main = function () {
-	console.log("Ready");
+rhit.checkForRedirects = function () {
+	if(document.getElementById("loginPage") && rhit.fbAuthManager.isSignedIn) {
+		window.location.href = "/list.html"
+	}
+	if(!document.getElementById("loginPage") && !rhit.fbAuthManager.isSignedIn) {
+		window.location.href = "/"
+	}
+}
 
-	rhit.fbAuthManager = new rhit.FbAuthManager();
-	rhit.fbAuthManager.beginListening(() => {
-		console.log("Is signed in: " + rhit.fbAuthManager.isSignedIn);
-	})
-
+rhit.initiailizePage = function () {
 	if(document.querySelector("#listPage")) {
 		console.log("You are on the list page");
 		rhit.fbMovieQuotesManager = new rhit.FbMovieQuotesManager();
@@ -268,6 +269,18 @@ rhit.main = function () {
 		console.log("You are on the login page");
 		new rhit.LoginPageController();
 	}
+}
+
+/* Main */
+rhit.main = function () {
+	console.log("Ready");
+
+	rhit.fbAuthManager = new rhit.FbAuthManager();
+	rhit.fbAuthManager.beginListening(() => {
+		console.log("Is signed in: " + rhit.fbAuthManager.isSignedIn);
+		rhit.checkForRedirects();
+		rhit.initiailizePage();
+	})
 
 	// const ref = firebase.firestore().collection("MovieQuotes");
 	// ref.onSnapshot((querySnapshot) => {
