@@ -17,6 +17,7 @@ body > #fab {
     bottom: 10px;
     background: #800000;
     color: #ffffff;
+    z-index: 100;
 }
 
 body > #fab:active {

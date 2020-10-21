@@ -3,6 +3,7 @@ var rhit = rhit || {};
 rhit.FB_COLLECTION_MOVIEQUOTES = "MovieQuotes";
 rhit.FB_KEY_QUOTE = "quote";
 rhit.FB_KEY_MOVIE = "movie";
+rhit.FB_KEY_AUTHOR = "author";
 rhit.FB_KEY_LAST_TOUCHED = "lastTouched";
 rhit.fbMovieQuotesManager = null;
 rhit.fbSingleQuoteManager = null;
@@ -92,7 +93,8 @@ rhit.MoviewQuote = class {
 }
 
 rhit.FbMovieQuotesManager = class {
-	constructor() {
+	constructor(uid) {
+		this._uid = uid;
 		this._documentSnapshots = [];
 		this._ref = firebase.firestore().collection(rhit.FB_COLLECTION_MOVIEQUOTES);
 		this._unsubscribe = null;
@@ -101,13 +103,14 @@ rhit.FbMovieQuotesManager = class {
 		this._ref.add({
 			[rhit.FB_KEY_QUOTE]: quote,
 			[rhit.FB_KEY_MOVIE]: movie,
+			[rhit.FB_KEY_AUTHOR]: rhit.fbAuthManager.uid,
 			[rhit.FB_KEY_LAST_TOUCHED]: firebase.firestore.Timestamp.now()
 		})
 	}
 	beginListening(changeListener) {
-		this._unsubscribe = this._ref
-		.orderBy(rhit.FB_KEY_LAST_TOUCHED, "desc")
-		.limit(50)
+		let query = this._ref.orderBy(rhit.FB_KEY_LAST_TOUCHED, "desc").limit(50)
+		if (this._uid) { query = query.where(rhit.FB_KEY_AUTHOR, "==", this._uid)}
+		this._unsubscribe = query
 		.onSnapshot((querySnapshot) => {
 			this._documentSnapshots = querySnapshot.docs;
 			changeListener();
@@ -262,17 +265,16 @@ rhit.checkForRedirects = function () {
 }
 
 rhit.initiailizePage = function () {
+	const urlParams = new URLSearchParams(window.location.search);
 	if(document.querySelector("#listPage")) {
 		console.log("You are on the list page");
-		rhit.fbMovieQuotesManager = new rhit.FbMovieQuotesManager();
+		rhit.fbMovieQuotesManager = new rhit.FbMovieQuotesManager(urlParams.get("uid"));
 		new rhit.ListPageController();
 
 	}
 
 	if(document.querySelector("#detailPage")) {
 		console.log("You are on the detail page")
-		const queryString = window.location.search;
-		const urlParams = new URLSearchParams(queryString);
 		rhit.fbSingleQuoteManager = new rhit.FbSingleQuoteManager(urlParams.get("mq"));
 		new rhit.DetailPageController();
 	}
