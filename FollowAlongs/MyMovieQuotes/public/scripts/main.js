@@ -22,6 +22,18 @@ rhit.functionName = function () {
 
 rhit.ListPageController = class {
 	constructor() {
+		document.getElementById("menuShowAllQuotes").onclick = (event) => {
+			window.location.href = "/list.html";
+		}
+
+		document.getElementById("menuShowMyQuotes").onclick = (event) => {
+			window.location.href = `/list.html?uid=${rhit.fbAuthManager.uid}`;
+		}
+
+		document.getElementById("menuSignOut").onclick = (event) => {
+			rhit.fbAuthManager.signOut();
+		}
+
 		document.getElementById("submitAddQuote").onclick = (event) => {
 			const quote = document.getElementById("inputQuote").value;
 			const movie = document.getElementById("inputMovie").value;
