@@ -17,6 +17,7 @@ body > #fab {
     bottom: 10px;
     background: #800000;
     color: #ffffff;
+    z-index: 100;
 }
 
 body > #fab:active {
@@ -26,6 +27,43 @@ body > #fab:active {
 
 .dropdown-menu-right {
     left: -128px;
+}
+
+#roseFireButton {
+    display: block;
+    margin: 60px auto;
+    color: white;
+    background: #800000;
+    font-size: 1.1em;
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+
+#loginTitle {
+    margin: 10px auto 30px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.bmd-layout-content {
+    height: 100vh;
+}
+
+.bmd-layout-drawer>header {
+    background-color: #800000;
+    color: white;
+}
+
+.bmd-layout-drawer>ul {
+    background-color: #DDDDDD;
+}
+
+.list-group-item :first-child {
+    margin-right: .75rem;
+}
+
+#menuEdit, #menuDelete {
+    display: none;
 }
 
 /* Taken from https://gist.github.com/fisherds/7110e67bcda071aa8a00293e2c05f372 */

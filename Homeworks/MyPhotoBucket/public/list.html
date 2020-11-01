@@ -14,12 +14,38 @@
   <nav class="navbar navbar-dark fixed-top">
     <a class="navbar-brand" href="#">My Photo Bucket</a>
   </nav>
-  <div id="listPage" class="container page-container">
-    
-    <div id="photoListContainer">
-
+  
+  <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+    <header class="bmd-layout-header">
+      <div class="navbar navbar-dark bg-faded fixed-top justify-content-start">
+        <button class="navbar-toggler" type="button" data-toggle="drawer" data-target="#dw-p1">
+          <span class="sr-only">Toggle drawer</span>
+          <i class="material-icons">menu</i>
+        </button>
+        <ul class="nav navbar-nav">
+          <a class="navbar-brand" href="/list.html">&nbsp;&nbsp;&nbsp;My Photo Bucket</a>
+        </ul>
+      </div>
+    </header>
+    <div id="dw-p1" class="bmd-layout-drawer bg-faded">
+      <header>
+        <a class="navbar-brand">My Movie Quotes</a>
+      </header>
+      <ul class="list-group">
+        <a id="menuShowAllQuotes" class="list-group-item"><i class="material-icons">people_alt</i>Show all photos</a>
+        <a id="menuShowMyQuotes" class="list-group-item"><i class="material-icons">person</i>Show my photos</a>
+        <a id="menuSignOut" class="list-group-item"><i class="material-icons">login</i>Sign out</a>
+      </ul>
     </div>
-
+    <main class="bmd-layout-content">
+      <div id="listPage" class="container page-container">
+    
+        <div id="photoListContainer">
+    
+        </div>
+    
+      </div>
+    </main>
   </div>
 
   <!-- FAB -->
