@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+  <link rel="stylesheet" href="styles/bootstrap-material-design.min.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <title>My Photo Bucket</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark fixed-top">
+    <a class="navbar-brand" href="#">My Photo Bucket</a>
+  </nav>
+  <div id="listPage" class="container page-container">
+    
+    <div id="photoListContainer">
+
+    </div>
+
+  </div>
+
+  <!-- FAB -->
+  <button id="fab" type="button" class="btn bmd-btn-fab" data-toggle="modal" data-target="#addPhotoDialog">
+    <i class="material-icons">add</i>
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="addPhotoDialog" tabindex="-1" role="dialog" aria-labelledby="Add photo dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add a photo</h5>
+        </div>
+        <div class="modal-body">
+          
+          <div class="form-group .bmd-form-group">
+            <label for="inputURL">Image:</label>
+            <input type="text" class="form-control" id="inputURL" placeholder="URL to existing image">
+          </div>
+          <div class="form-group bmd-form-group">
+            <label for="inputCaption">Caption: </label>
+            <input type="text" class="form-control" id="inputCaption" placeholder="Image related text">
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button class="btn btnsecondary" type="button" data-dismiss="modal">CANCEL</button>
+          <button id="submitAddPhoto" class="btn btn-primary" type="button" data-dismiss="modal">CREATE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/popper.js"></script>
+  <script src="scripts/bootstrap-material-design.js"></script>
+  <script>$("body").bootstrapMaterialDesign();</script>
+  <script src="/__/firebase/7.18.0/firebase-app.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-analytics.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-firestore.js"></script>
+  <script src="/__/firebase/init.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>
