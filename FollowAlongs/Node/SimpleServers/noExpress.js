@@ -1,3 +1,6 @@
+let abcTracker = 0;
+let totalTracker = 0;
+
 const http = require('http');
 
 const mainHandler = function (request, response) {
@@ -9,6 +12,10 @@ const mainHandler = function (request, response) {
 	}
 
 	console.log( request.url );
+
+	if(request.url == "/abc") abcTracker++;
+	totalTracker++;
+
 	response.statusCode = 200;
 	response.setHeader('Content-Type', 'text/html');
 	response.write('<!doctype html>\n');
@@ -16,6 +23,8 @@ const mainHandler = function (request, response) {
 	response.write('<title> Dice Roller</title>\n');
 	response.write('</head>\n<body>\n');
 	response.write('<h1>Hello World!</h1>');
+	response.write('<div>abcTracker ='+ abcTracker+'</div>');
+	response.write('<div>titalTracker ='+ totalTracker+'</div>');
 	response.write('\n</body>\n</html>');
     response.end();
 }
