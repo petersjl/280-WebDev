@@ -1,0 +1,19 @@
+{
+  "name": "simpleservers",
+  "version": "1.0.0",
+  "description": "using no express server",
+  "main": "noExpress.js",
+  "scripts": {
+    "start": "nodemon express.js",
+    "nm": "nodemon noExpress.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6",
+    "pug": "^3.0.0",
+    "underscore": "^1.11.0"
+  }
+}

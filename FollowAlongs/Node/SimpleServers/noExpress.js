@@ -2,6 +2,7 @@ let abcTracker = 0;
 let totalTracker = 0;
 
 const http = require('http');
+const _ = require("underscore")
 
 const abcHandler = function (request, response) {
 	response.write('<h1>ABC</h1>');
@@ -15,6 +16,12 @@ const xyzHandler = function (request, response) {
 	response.write('<h1>Hello World!</h1>');
 	response.write('<div>abcTracker ='+ abcTracker+'</div>');
 	response.write('<div>totalTracker ='+ totalTracker+'</div>');
+
+	for(let i=0; i<5; i++) {
+		let randNUm = _.random(1,6)
+		response.write('<p>'+randNUm+'</p>');
+	}
+
 	response.write('\n</body>\n</html>');
 }
 

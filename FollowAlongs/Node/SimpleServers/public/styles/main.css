@@ -1,0 +1,20 @@
+body{
+    background: #800000;
+}
+
+.button-group{
+    text-align: center;
+    padding: 10vw;
+}
+
+.button-group > button {
+    font-size: 1.5em;
+    padding: 10px 20px;
+    margin: 0 10px;
+}
+
+#counterText {
+    text-align: center;
+    font: 4em consolas, Arial, Helvetica, sans-serif;
+    color: white;
+}
