@@ -36,9 +36,43 @@ var bodyParser = require("body-parser");
 app.use('/api/', bodyParser.urlencoded( {extended: true} ))
 app.use('/api/', bodyParser.json());
 
+//read
 app.get("/api/", function (req, res) {
 	console.log("Server call to api");
 	res.send( data );
+	res.end();
+})
+
+//create
+app.post("/api/", function (req, res) {
+	let name = req.body.name;
+	let count = req.body.count;
+	data.push( {"name": name, "count": count})
+	saveToServer(data);
+	console.log("Server call to api");
+	res.send( "Post successful" );
+	res.end();
+})
+
+//read one
+app.get("/api/id/:id", function (req, res) {
+	let id = parseInt(req.params.id);
+	let result = data[id];
+	res.send( result );
+	res.end();
+}).put("/api/id/:id", function (req, res) {
+	let id = parseInt(req.params.id);
+	let name = req.body.name;
+	let count = req.body.count;
+	data[id] = ( {"name": name, "count": count})
+	saveToServer(data);
+	res.send("PUT successful")
+	res.end();
+}).delete("/api/id/:id", function (req, res) {
+	let id = parseInt(req.params.id);
+	data.splice(id, 1);
+	saveToServer(data);
+	res.send( "DELETE successful" );
 	res.end();
 })
 
