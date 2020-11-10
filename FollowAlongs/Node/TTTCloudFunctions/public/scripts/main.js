@@ -1,5 +1,7 @@
 var rhit = rhit || {};
 
+var testing = false;
+
 rhit.PageController = class {
 	constructor() {
 		this.game = new rhit.Game();
@@ -33,15 +35,27 @@ rhit.PageController = class {
 		if(this.game.isOTurn) {
 			const boardString = this.game.boardString;
 			// fetch(`/api/getmove/${this.game.boardString}`)
-			fetch(`http://localhost:5001/petersjlcsse280/us-central1/api/getmove/${this.game.boardString}`)
-				.then((res) => {
-					console.log(res);
-					return res.json();
-				})
-				.then((data) => {
-					this.game.presssedButtonAtIndex(data.move);
-         			this.updateView();
-				});
+			if (testing) {
+				fetch(`http://localhost:5001/petersjlcsse280/us-central1/api/getmove/${this.game.boardString}`)
+					.then((res) => {
+						console.log(res);
+						return res.json();
+					})
+					.then((data) => {
+						this.game.presssedButtonAtIndex(data.move);
+						this.updateView();
+					});
+			} else {
+				fetch(`https://us-central1-petersjlcsse280.cloudfunctions.net/api/getmove/${this.game.boardString}`)
+					.then((res) => {
+						console.log(res);
+						return res.json();
+					})
+					.then((data) => {
+						this.game.presssedButtonAtIndex(data.move);
+						this.updateView();
+					});
+			}
 
 		}
 	}
