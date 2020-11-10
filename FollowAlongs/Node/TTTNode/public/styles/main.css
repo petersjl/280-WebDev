@@ -1,0 +1,91 @@
+body {
+    background: #DDDDDD;
+}
+
+.navbar {
+    background-color: #800000;
+    color: white;
+}
+
+.page-container {
+    margin-top: 75px;
+}
+
+.square {
+    background-color: #80000080;
+    color: white;
+    flex: 1 0 0;
+    text-align: center;
+    font-size: 60px;
+    line-height: 100px;
+    font-weight: 500;
+}
+
+.b-top {
+    border-top: 4px solid black;
+}
+
+.b-bottom {
+    border-bottom: 4px solid black;
+}
+
+.b-left {
+    border-left: 4px solid black;
+}
+
+.b-right {
+    border-right: 4px solid black;
+}
+
+#newGameButton {
+    background-color: #800000;
+    margin-top: 15px;
+    margin-left: auto;
+    color: white;
+    grid-column: 3 / 4;
+}
+
+.my-row {
+    display: flex;
+    direction: row;
+}
+
+#gameBoard {
+    height: 380px;
+    width: 380px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+@media (min-width: 576px) {
+    #gameBoard {
+        height: 500px;
+        width: 500px;
+    }
+
+    .square {
+        font-size: 90px;
+        line-height: 140px;
+    }
+
+    #newGameButton {
+        font-size: 1.25em;
+    }
+}
+
+@media (min-width: 768px) {
+    #gameBoard {
+        height: 650px;
+        width: 650px;
+    }
+
+    .square {
+        font-size: 120px;
+        line-height: 180px;
+    }
+
+    #newGameButton {
+        font-size: 1.5em;
+    }
+}
