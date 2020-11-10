@@ -32,7 +32,8 @@ rhit.PageController = class {
 
 		if(this.game.isOTurn) {
 			const boardString = this.game.boardString;
-			fetch(`/api/getmove/${this.game.boardString}`)
+			// fetch(`/api/getmove/${this.game.boardString}`)
+			fetch(`http://localhost:5001/petersjlcsse280/us-central1/api/getmove/${this.game.boardString}`)
 				.then((res) => {
 					console.log(res);
 					return res.json();
