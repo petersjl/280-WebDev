@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "petersjl-tictactoe",
     "public": "public",
     "ignore": [
       "firebase.json",

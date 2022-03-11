@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "petersjl-helloframeworks",
     "public": "public",
     "ignore": [
       "firebase.json",
