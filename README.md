@@ -1,6 +1,20 @@
-# CSSE280-Fall-2020-Personal-Repo
-This serves as the starting repo for individual student work in CSSE280 for Fall 2020.
+# CSSE280 Web Development
+This is the repo of coding projects from my web development course at rose hulman.
 
-You should use the two folders, FollowAlongs and Homeworks, in order to organize your work and regularly commit as you make progress during the quarter. 
+# Here is a list of projects within this repo
 
-* Be sure to leave a commit message when your work on a particular project is completed, i.e. "HelloWorld COMPLETE"
+## Follow Alongs
+- HelloWorld
+- HelloButton
+- [HelloFrameworks](https://petersjl-helloframeworks.web.app)
+- [TicTacToe](https://petersjl-tictactoe.web.app)
+- [MovieQuotes](https://petersjl-moviequotes.web.app)
+- [FirebaseAuth](https://petersjl-firebaseauth.web.app)
+- [MyMovieQuotes](https://petersjl-mymoviequotes.web.app)
+- NodeServer
+
+## Homeworks
+- [FavoriteThings](https://petersjl-favoritethings.web.app)
+- [LinearLightsOut](https://petersjl-linearlightsout.web.app)
+- [PhotoBucket](https://petersjl-photobucket.web.app)
+- [MyPhotoBucket](https://petersjl-myphotobucket.web.app)
